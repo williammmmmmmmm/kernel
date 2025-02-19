@@ -17,6 +17,7 @@ on:
         type: choice
         options:
           - unifreq
+          - armbian
       kernel_version:
         description: "Select kernel version"
         required: false
@@ -32,6 +33,7 @@ on:
           - 5.4.y_5.10.y
           - 5.15.y_6.1.y
           - 6.6.y_6.12.y
+          - linux-rockchip@rk-6.1-rkr5
       kernel_auto:
         description: "Auto use the latest kernel"
         required: false
@@ -52,6 +54,7 @@ on:
         type: choice
         options:
           - kernel-config/release/general
+          - kernel-config/release/rk35xx
           - false
       kernel_patch:
         description: "Set the directory for kernel patches"
