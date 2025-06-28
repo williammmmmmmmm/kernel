@@ -164,7 +164,13 @@ jobs:
           kernel_sign: ${{ inputs.kernel_sign }}
           kernel_config: ${{ inputs.kernel_config }}
           compress_format: ${{ inputs.compress_format }}
-
+          
+      - name: Extract Module.symvers
+        run: |
+          # 进入内核源码目录
+          tar czf /source.tgz /builder /home/runner/work/_actions/ophub/amlogic-s9xxx-armbian/main/compile-kernel
+          cp /source.tgz ${ env.PACKAGED_OUTPUTPATH }
+          
       - name: Upload Kernel to Release
         uses: ncipollo/release-action@main
         if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
